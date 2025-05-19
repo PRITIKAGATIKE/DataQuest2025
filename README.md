@@ -1,5 +1,5 @@
 # DataQuest2025
-##Overview:
+## Overview:
 The corporation has spent numerous resources and has wasted large amounts of money on meeting overviews written by trained professionals who could better use their time on more complex tasks. Not to mention, the need for follow-up emails, chats, and note-taking has wasted valuable company time. And hence, we introduce our model- StreamLine, ideated to streamline the redundant tasks that could be automated to make the employee’s life easier, and more importantly-accurate. Reducing the scope for human error in follow-up emails after meetings: by presenting accurate transcription summaries, active AI-powered solutions, and giving a personalised efficiency index, StreamLine is here to remove the mundane tasks that no employee wants to do. 
 
 StreamLine is being built on VS Code using Langchain, Poetry, and Python technologies. We have incorporated Agentic AI-powered features that have been explained in detail below. Using the Parallel chain, branch chain, and RAG, we have been able to see a systematic breakdown of complex hour-long meetings, emails, calendar updates, and even chat logs.
@@ -8,7 +8,7 @@ StreamLine is being built on VS Code using Langchain, Poetry, and Python technol
 
 
 
-##Features of Summary:
+## Features of Summary:
 
 ### Default Summary of Google, Zoom, or Professional call transcripts 
 The model will generate a default summary of the meeting (and email chains), which will be beneficial not only to the members of the team who may have missed the meeting but also to the attendees. It has been programmed to send an email to every team member, consisting of a concise summary of the meeting, which will help record the new ideas and projects that may have spontaneously been brainstormed. The summary includes the following features :
@@ -61,7 +61,7 @@ Our flow will look very similar to this:
 
 
 
-##Open Ended Questions:
+## Open Ended Questions:
 In many meetings/email chains/chat logs, there may be important questions that have been discussed but ultimately left unanswered, and these questions will all be documented under a separate section. Some of these questions will have potential answers discussed in the meeting, and some will have AI-powered solutions related to previous such queries and the progression of the meeting.
 
 A few questions could be:
@@ -80,7 +80,7 @@ Unlike meetings and emails, chat logs do not have the same organic flow, which i
 
 We believe that this feature can be further integrated with WhatsApp chats and numerous other applications according to user requirements.
 
-##System Architecture:
+## System Architecture:
 
 
 ![LL](https://github.com/user-attachments/assets/6e6a5f6b-4cc9-484d-b858-92c926c8d339)
