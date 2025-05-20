@@ -1,0 +1,47 @@
+##Code also taken primarily from a Lang chain crash course and modified to fit our needs
+import os
+import emplyee_database
+from dotenv import load_dotenv
+from langchain_community.vectorstores import Chroma
+from langchain_openai import OpenAIEmbeddings
+load_dotenv()
+current_dir = os.path.dirname(os.path.abspath(__file__))
+db_dir = os.path.join(current_dir, "db")
+persistent_directory = os.path.join(db_dir, "chroma_db_with_metadata")
+embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+db = Chroma(persist_directory=persistent_directory,
+            embedding_function=embeddings)
+def query_vector_store(
+    store_name, query, embedding_function, search_type, search_kwargs
+):
+    try:
+        if os.path.exists(persistent_directory):
+            print(f"\n--- Querying the Vector Store {store_name} ---")
+            db = Chroma(
+                persist_directory=persistent_directory,
+                embedding_function=embedding_function,
+            )
+            retriever = db.as_retriever(
+                search_type=search_type,
+                search_kwargs=search_kwargs,
+            )
+            relevant_docs = retriever.invoke(query)
+            # Display the relevant results with metadata
+            print(f"\n--- Relevant Documents for {store_name} ---")
+            for i, doc in enumerate(relevant_docs, 1):
+                print(f"Document {i}:\n{doc.page_content}\n")
+                if doc.metadata:
+                    print(f"Source: {doc.metadata.get('source', 'Unknown')}\n")
+        else:
+            print(f"Vector store {store_name} does not exist.")
+    except Exception as e:
+        print(f"An error occurred while querying the vector store: {e}"):
+
+
+query = "Who would be the best fit for the job according to {emplyee_database}?"
+
+query_vector_store("chroma_db_with_metadata", query,
+                   embeddings, "similarity", {"k": 3})
+
+
+#
