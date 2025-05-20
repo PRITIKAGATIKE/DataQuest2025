@@ -1,0 +1,29 @@
+##Promt template that we are planning to use:
+from langchain_core.prompts import PromptTemplate
+
+prompt1 = PromptTemplate.from_template("Rate the following factor of the meeting from a scale from 0 to 10 {topic}")
+
+prompt1.invoke({"topic": "Focus given to the agendas"})
+
+prompt2 = PromptTemplate.from_template("Rate the following factor of the meeting from a scale from  to 10 {topic}")
+
+prompt2.invoke({"topic": "Spontaneous and innovative ideas"})
+
+prompt3 = PromptTemplate.from_template("Rate the following factor of the meeting from a scale from -10 to 0 {topic}")
+
+prompt3.invoke({"topic": "Personal and unprofessional topic discussion"})
+
+##Parallel chain code format that we are planning to use:
+
+from langchain_core.runnables import RunnableLambda, RunnableParallel
+runnable1 = RunnableLambda(lambda x: x + 1)
+runnable2 = RunnableLambda(lambda x: x * 2)
+runnable3 = RunnableLambda(lambda x: x * 3)
+parallel_runnable = RunnableParallel({
+    'task1': runnable1,
+    'task2': runnable2,
+    'task3': runnable3,
+})
+input_data = 5
+result = parallel_runnable.invoke(input_data)
+print(result)
